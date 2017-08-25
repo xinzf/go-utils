@@ -7,6 +7,8 @@ import (
 	// "os"
 	"strconv"
 	"strings"
+
+	"github.com/satori/go.uuid"
 )
 
 func GetIP() ([]string, error) {
@@ -51,5 +53,13 @@ func Num2ip(num int) string {
 }
 
 func NowTime() string {
-	return time.Now().Format("2006-01-02 15:04:05")
+	return TimeFormat(time.Now())
+}
+
+func TimeFormat(t time.Time) string {
+	return t.Format("2006-01-02 15:04:05")
+}
+
+func UUID() string {
+	return strings.Replace(uuid.NewV4().String(), "-", "", -1)
 }
